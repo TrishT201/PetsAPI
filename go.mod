@@ -1,4 +1,4 @@
-module example/restAPI
+module restAPI
 
 go 1.20
 
