@@ -20,5 +20,5 @@ func EnvMongoURI() string {
 
 	// Getenv takes the name of the env variable("MONGODB_URI") and returns its associated. If the environment
 	// variable specified does not exist on the system, the function returns an empty value.
-	return os.Getenv("MONGOUDB_URI")
+	return os.Getenv("MONGODB_URI")
 }
