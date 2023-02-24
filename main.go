@@ -19,6 +19,7 @@ package main
 // import dependencies
 import (
 	"restAPI/configs"
+	"restAPI/routes"
 
 	"github.com/gin-gonic/gin"
 )
@@ -30,6 +31,9 @@ func main() {
 
 	// run database
 	configs.ConnectDB()
+
+	//routes
+	routes.PetRoute(router)
 
 	// Listen and serve HTTP request on localhost:6000. By default it serves on :8080 unless defined
 	router.Run("localhost:6000")
