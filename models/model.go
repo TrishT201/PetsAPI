@@ -20,9 +20,19 @@ type Pet struct {
 	// primitive.ObjectID inform the MongoDB server that it's a MongoDB ObjectIds
 	ID    primitive.ObjectID `json:"id"`
 	PName string             `json:"pname"`
-	DOB   float64            `json:"dob"`
+	DOB   string             `json:"dob"`
 	Owner string             `json:"owner"`
-	Kind  string             `json:"kind"`
-	Size  int                `json:"size"`
+	Kind  Kind               `json:"kind"`
+	Size  Size               `json:"size"`
 	Toy   string             `json:"toy"`
+}
+
+type Size struct {
+	Height string `json:"toy"`
+	Weight string `json:"weight"`
+}
+
+type Kind struct {
+	Animal string `json:"animal"`
+	Breed  string `json:"breed"`
 }
