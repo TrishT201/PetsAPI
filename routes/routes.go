@@ -13,7 +13,7 @@ import (
 )
 
 // CRUD routes to call the controllers
-func Route(router *gin.Engine) {
+func PetRoute(router *gin.Engine) {
 	// ALL routers related to users come here
 	router.POST("/pet", controllers.CreatePet())
 	router.GET("/pet/:petId", controllers.GetPet())

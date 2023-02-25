@@ -18,13 +18,13 @@ We use them to reformat the JSON response returned by the API
 
 type Pet struct {
 	// primitive.ObjectID inform the MongoDB server that it's a MongoDB ObjectIds
-	ID    primitive.ObjectID `json:"id"`
-	PName string             `json:"pname"`
-	DOB   string             `json:"dob"`
-	Owner string             `json:"owner"`
-	Kind  Kind               `json:"kind"`
-	Size  Size               `json:"size"`
-	Toy   string             `json:"toy"`
+	ID    primitive.ObjectID
+	PName string `json:"pname"`
+	DOB   string `json:"dob"`
+	Owner string `json:"owner"`
+	Kind  Kind   `json:"kind"`
+	Size  Size   `json:"size"`
+	Toy   string `json:"toy"`
 }
 
 type Size struct {

@@ -97,14 +97,15 @@ func EditPet() gin.HandlerFunc {
 
 		// validate the request body
 		if err := c.BindJSON(&pet); err != nil {
-			c.JSON(http.StatusBadRequest, responses.PetResponse{Status: http.StatusBadRequest, Message: "error", Data: map[string]interface{}{"data": err.Error()}})
+			c.JSON(http.StatusBadRequest, responses.PetResponse{Status: http.StatusBadRequest, Message: "Can't request the model", Data: map[string]interface{}{"data": err.Error()}})
 			return
 		}
 
-		update := bson.M{"name": pet.PName, "owner": pet.Owner, "kind": pet.Kind, "size": pet.Size, "toy": pet.Toy}
+		update := bson.M{"name": pet.PName, "dob": pet.DOB, "owner": pet.Owner, "kind": pet.Kind, "size": pet.Size, "toy": pet.Toy}
 		result, err := petCollection.UpdateOne(ctx, bson.M{"id": objId}, bson.M{"$set": update})
+
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, responses.PetResponse{Status: http.StatusInternalServerError, Message: "error", Data: map[string]interface{}{"data": err.Error()}})
+			c.JSON(http.StatusInternalServerError, responses.PetResponse{Status: http.StatusInternalServerError, Message: "error2", Data: map[string]interface{}{"data": err.Error()}})
 			return
 		}
 
@@ -113,7 +114,8 @@ func EditPet() gin.HandlerFunc {
 		if result.MatchedCount == 1 {
 			err := petCollection.FindOne(ctx, bson.M{"id": objId}).Decode(&updatedPet)
 			if err != nil {
-				c.JSON(http.StatusInternalServerError, responses.PetResponse{Status: http.StatusInternalServerError, Message: "error", Data: map[string]interface{}{"data": err.Error()}})
+				c.JSON(http.StatusInternalServerError, responses.PetResponse{Status: http.StatusInternalServerError, Message: "error3", Data: map[string]interface{}{"data": err.Error()}})
+				return
 			}
 		}
 
