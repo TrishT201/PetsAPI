@@ -47,6 +47,8 @@ func CreatePet() gin.HandlerFunc {
 			Toy:   pet.Toy,
 		}
 
+		newPet.SetDefaults()
+
 		// insert newPet into the collection
 		result, err := petCollection.InsertOne(ctx, newPet)
 
